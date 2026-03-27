@@ -87,6 +87,16 @@ If you link this frontend to a functioning database, here is the suggested serve
 
 ---
 
+## 👨‍💻 Developed By
+
+**Zeeshan Sarwar**  
+*Passionate Software Engineer & UI/UX Specialist*  
+Dedicated to crafting high-performance, visually stunning, and scalable web applications for the global market. Every line of code is written with precision, user-centric design principles, and enterprise-level scalability in mind. Combining innovation with technical excellence to build digital experiences that truly stand out.
+
+📞 **Contact / WhatsApp:** [+92 332 3001003](https://wa.me/923323001003)
+
+---
+
 <div align="center">
   <br>
   <p><i>Developed & Designed for high-scale global access and premium user experience.</i></p>
