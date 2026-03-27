@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AdZee.pk - Buy, Sell & Exchange - Pakistan's Free Ads Platform</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Noto+Nastaliq+Urdu:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--red:#D32F2F;--red-dark:#B71C1C;--red-light:#EF5350;--red-pale:#FFEBEE;--white:#fff;--gray-light:#f5f5f5;--gray:#9e9e9e;--gray-dark:#424242;--text:#212121;--orange:#f0892d;}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Poppins',sans-serif;background:var(--gray-light);color:var(--text);}
+
+/* ===== TOP NAVBAR ===== */
+.topnav{background:#fff;border-bottom:1px solid #eee;padding:0 30px;display:flex;align-items:center;justify-content:space-between;height:75px;position:sticky;top:0;z-index:200;box-shadow:0 2px 8px rgba(0,0,0,0.04);}
+.tn-logo{display:flex;flex-direction:column;line-height:1;text-decoration:none;flex:1;}
+.tn-logo .brand{font-size:24px;font-weight:800;color:var(--red);}
+.tn-logo .brand span{color:var(--gray-dark);}
+.tn-logo .slogan{font-size:10px;color:var(--gray);letter-spacing:0.5px;margin-top:2px;}
+.tn-links{display:flex;align-items:center;justify-content:center;gap:24px;flex:2;}
+.tn-link{font-size:14px;font-weight:500;color:var(--gray-dark);text-decoration:none;display:flex;align-items:center;transition:color 0.2s;}
+.tn-link:hover{color:var(--orange);}
+.tn-link.has-arrow{gap:4px;}
+.tn-link.has-arrow::after{content:'▾';font-size:12px;color:#999;margin-top:2px;}
+.tn-right{display:flex;align-items:center;justify-content:flex-end;gap:12px;flex:1;}
+.tn-right .signin{display:flex;align-items:center;color:var(--red);font-weight:600;text-decoration:none;}
+.tn-right .register{color:var(--gray-dark);font-weight:500;text-decoration:none;transition:color 0.2s;}
+.tn-right .register:hover{color:var(--red);}
+.tn-right .sep{color:#888;font-size:13px;}
+.btn-post-ad{background:var(--orange);color:#fff;border:none;padding:10px 20px;border-radius:4px;font-size:14px;font-weight:600;cursor:pointer;font-family:inherit;display:flex;align-items:center;gap:6px;transition:opacity 0.2s;white-space:nowrap;margin-left:10px;}
+.btn-post-ad:hover{opacity:0.9;}
+
+/* ===== MEGA MENU ===== */
+.nav-item{position:relative;display:flex;align-items:center;height:100%;}
+.mega-menu{position:absolute;top:100%;left:50%;transform:translateX(-50%);background:#fff;border-top:3px solid var(--red);box-shadow:0 10px 30px rgba(0,0,0,0.15);display:none;grid-template-columns:repeat(4,1fr);gap:30px;padding:30px;width:950px;margin-top:0;z-index:1000;border-radius:0 0 8px 8px;text-align:left;}
+.nav-item:hover .mega-menu{display:grid;}
+.mega-col h3{font-size:14px;font-weight:800;color:var(--text);margin-bottom:12px;}
+.mega-col ul{list-style:none;}
+.mega-col ul li{margin-bottom:8px;}
+.mega-col ul li a{font-size:13px;color:var(--gray-dark);text-decoration:none;display:flex;align-items:center;gap:6px;padding:0 !important;white-space:normal !important;line-height:1.4;}
+.mega-col ul li a::before{content:'›';font-size:16px;color:var(--gray);font-weight:bold;line-height:0;}
+.mega-col ul li a:hover{color:var(--red);}
+.mega-col ul li a:hover::before{color:var(--red);}
+.mega-col + .mega-col{margin-top:25px;}
+
+/* ===== SIMPLE DROPDOWN ===== */
+.dropdown-menu{position:absolute;top:100%;left:50%;transform:translateX(-50%);background:#fff;border-top:3px solid var(--red);box-shadow:0 10px 30px rgba(0,0,0,0.15);display:none;min-width:180px;padding:10px 0;margin-top:0;z-index:1000;border-radius:0 0 8px 8px;text-align:left;}
+.nav-item:hover .dropdown-menu{display:block;}
+.dropdown-menu ul{list-style:none;}
+.dropdown-menu ul li{margin-bottom:0;}
+.dropdown-menu ul li a{display:block;padding:12px 20px !important;font-size:14px !important;color:var(--text) !important;text-decoration:none;white-space:nowrap !important;transition:background 0.2s,color 0.2s;border:none !important;}
+.dropdown-menu ul li a:hover{background:var(--red-pale);color:var(--red) !important;}
+.dropdown-menu ul li a::before{display:none;}
+
+/* ===== HERO ===== */
+.hero{position:relative;width:100%;height:450px;overflow:hidden;}
+.hero-bg{width:100%;height:100%;object-fit:cover;object-position:center;display:block;}
+.hero-overlay{position:absolute;inset:0;background:rgba(0,0,0,0.52);}
+.hero-content{position:absolute;inset:0;display:flex;justify-content:center;align-items:center;padding:0 20px;}
+.hero-inner{width:100%;max-width:1100px;margin:0 auto;}
+.hero-inner h1{color:#fff;font-size:32px;font-weight:800;line-height:1.3;text-shadow:0 2px 8px rgba(0,0,0,0.4);margin-bottom:6px;}
+.hero-inner .sub{color:rgba(255,255,255,0.85);font-size:15px;margin-bottom:30px;}
+.hero-search-wrapper{background:rgba(0,0,0,0.4);padding:20px;border-radius:4px;width:100%;}
+.hero-search{display:flex;gap:15px;width:100%;}
+.hero-search > *{flex:1;height:50px;border-radius:4px;border:none !important;outline:none;font-family:inherit;font-size:14px;background:#fff;}
+.hero-search input{padding:0 16px;color:var(--text);}
+.hero-search select{padding:0 16px;color:var(--gray-dark);cursor:pointer;}
+.hero-search .loc-input{display:flex;align-items:center;padding:0 14px;gap:6px;color:var(--gray);background:#fff;}
+.hero-search .loc-input input{border:none;padding:0;height:100%;width:100%;background:transparent;}
+.hero-search .search-btn{background:var(--red);color:#fff;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;transition:background 0.2s;}
+.hero-search .search-btn:hover{background:var(--red-dark);}
+
+/* ===== POPULAR CATEGORIES ===== */
+.cats-section{background:#f8f9fa;padding:50px 0;}
+.cats-section h2{text-align:center;font-size:22px;font-weight:800;color:#000;margin-bottom:40px;text-decoration:underline;text-underline-offset:6px;text-decoration-thickness:3px;}
+.cats-slider-wrap{position:relative;display:flex;align-items:center;padding:0 50px;max-width:1200px;margin:0 auto;}
+.cats-slider{display:flex;gap:20px;overflow-x:auto;scroll-behavior:smooth;scrollbar-width:none;}
+.cats-slider::-webkit-scrollbar{display:none;}
+.cat-item{display:flex;flex-direction:column;align-items:center;padding:10px;cursor:pointer;min-width:120px;text-decoration:none;transition:transform 0.2s;}
+.cat-item:hover{transform:translateY(-4px);}
+.cat-item .cat-img{width:70px;height:70px;margin-bottom:12px;display:flex;align-items:center;justify-content:center;}
+.cat-item .cat-img img{width:100%;height:100%;object-fit:contain;filter:drop-shadow(0 4px 6px rgba(0,0,0,0.1));}
+.cat-item span{font-size:13px;font-weight:500;text-align:center;color:#444;}
+.arrow-btn{position:absolute;background:#e2e2e2;border:none;color:#555;width:36px;height:36px;border-radius:50%;cursor:pointer;font-size:18px;display:flex;align-items:center;justify-content:center;z-index:2;transition:all 0.2s;}
+.arrow-btn:hover{background:#d0d0d0;color:#000;}
+.arrow-left{left:0;}
+.arrow-right{right:0;}
+
+/* ===== CONTAINER ===== */
+.container{max-width:1200px;margin:0 auto;padding:0 20px;}
+
+/* ===== SECTION ===== */
+.section{padding:24px 0;}
+.section-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;}
+.section-title{font-size:18px;font-weight:700;display:flex;align-items:center;gap:8px;}
+.section-title::before{content:'';width:4px;height:20px;background:var(--red);border-radius:2px;display:inline-block;}
+.see-all{color:var(--red);font-size:13px;font-weight:600;text-decoration:none;border:1px solid var(--red);padding:4px 14px;border-radius:20px;transition:all 0.2s;}
+.see-all:hover{background:var(--red);color:#fff;}
+
+/* ===== MAIN LAYOUT ===== */
+.main-layout{display:grid;grid-template-columns:220px 1fr;gap:20px;padding:20px 0;}
+.sidebar{display:flex;flex-direction:column;gap:14px;}
+.sidebar-box{background:#fff;border-radius:10px;padding:16px;box-shadow:0 2px 8px rgba(0,0,0,0.06);}
+.sidebar-title{font-size:13px;font-weight:700;color:var(--red);margin-bottom:10px;padding-bottom:8px;border-bottom:2px solid var(--red-pale);}
+.sidebar-link{display:flex;justify-content:space-between;align-items:center;padding:7px 0;text-decoration:none;color:var(--text);font-size:13px;border-bottom:1px solid #f0f0f0;transition:color 0.2s;}
+.sidebar-link:hover{color:var(--red);}
+.sidebar-link .count{background:var(--red-pale);color:var(--red);font-size:10px;font-weight:700;padding:2px 7px;border-radius:10px;}
+
+/* ===== ADS GRID ===== */
+.ads-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:14px;}
+.ad-card{background:#fff;border-radius:10px;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,0.07);transition:all 0.25s;cursor:pointer;text-decoration:none;color:var(--text);display:block;position:relative;}
+.ad-card:hover{transform:translateY(-4px);box-shadow:0 8px 24px rgba(211,47,47,0.18);}
+.ad-img{width:100%;height:160px;object-fit:cover;background:var(--gray-light);display:flex;align-items:center;justify-content:center;font-size:48px;overflow:hidden;}
+.ad-img img{width:100%;height:100%;object-fit:cover;}
+.ad-body{padding:10px 12px;}
+.ad-price{font-size:16px;font-weight:800;color:var(--red);margin-bottom:4px;}
+.ad-title{font-size:12px;font-weight:600;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;line-height:1.4;margin-bottom:6px;}
+.ad-meta{font-size:11px;color:var(--gray);display:flex;justify-content:space-between;}
+.badge-featured{position:absolute;top:8px;left:8px;background:var(--red);color:#fff;font-size:10px;font-weight:700;padding:2px 8px;border-radius:20px;}
+.badge-new{position:absolute;top:8px;left:8px;background:#2e7d32;color:#fff;font-size:10px;font-weight:700;padding:2px 8px;border-radius:20px;}
+.fav-btn{position:absolute;top:8px;right:8px;background:#fff;border:none;width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:13px;box-shadow:0 2px 6px rgba(0,0,0,0.15);transition:transform 0.2s;}
+.fav-btn:hover{transform:scale(1.2);}
+.negotiable{font-size:9px;color:#2e7d32;background:#e8f5e9;padding:1px 5px;border-radius:8px;font-weight:600;}
+.fixed-tag{font-size:9px;color:#e65100;background:#fff3e0;padding:1px 5px;border-radius:8px;font-weight:600;}
+
+/* TABS */
+.tabs{display:flex;gap:6px;margin-bottom:14px;}
+.tab{padding:7px 16px;border-radius:20px;border:2px solid #e0e0e0;background:#fff;font-size:12px;font-weight:600;cursor:pointer;color:var(--gray-dark);transition:all 0.2s;font-family:inherit;}
+.tab.active{background:var(--red);border-color:var(--red);color:#fff;}
+.tab:hover:not(.active){border-color:var(--red);color:var(--red);}
+
+/* CITIES */
+.cities-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px;}
+.city-card{background:#fff;border-radius:10px;padding:14px;text-align:center;cursor:pointer;transition:all 0.2s;border:2px solid transparent;box-shadow:0 2px 6px rgba(0,0,0,0.06);text-decoration:none;color:var(--text);}
+.city-card:hover{border-color:var(--red);transform:translateY(-2px);}
+.city-icon{font-size:22px;margin-bottom:4px;}
+.city-name{font-size:12px;font-weight:700;}
+.city-count{font-size:10px;color:var(--gray);}
+
+/* HOW IT WORKS */
+.hiw{background:var(--red-pale);padding:40px 0;}
+.steps-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:16px;margin-top:20px;}
+.step-card{background:#fff;border-radius:10px;padding:20px;text-align:center;box-shadow:0 2px 8px rgba(0,0,0,0.06);}
+.step-num{width:42px;height:42px;background:var(--red);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:800;margin:0 auto 10px;}
+.step-icon{font-size:28px;margin-bottom:6px;}
+.step-title{font-size:14px;font-weight:700;margin-bottom:4px;}
+.step-desc{font-size:11px;color:var(--gray);line-height:1.6;}
+
+/* FEATURES STRIP */
+.features-strip{background:var(--red);color:#fff;padding:18px 0;}
+.features-strip .container{display:flex;justify-content:space-around;gap:20px;text-align:center;flex-wrap:wrap;}
+.feature-item .fi-icon{font-size:24px;margin-bottom:4px;}
+.feature-item .fi-title{font-size:13px;font-weight:700;}
+.feature-item .fi-desc{font-size:10px;opacity:0.85;}
+
+/* FOOTER */
+footer{background:#1a1a1a;color:#fff;padding:40px 0 0;}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:28px;margin-bottom:28px;}
+.footer-brand .logo-f{font-size:22px;font-weight:800;color:#ef9a9a;text-decoration:none;}
+.footer-brand .logo-f span{color:#aaa;}
+.footer-brand p{font-size:12px;color:#aaa;margin:10px 0;line-height:1.7;}
+.contact-info a{display:flex;align-items:center;gap:8px;color:#fff;text-decoration:none;font-size:13px;font-weight:700;background:var(--red);padding:8px 14px;border-radius:8px;margin-bottom:8px;transition:background 0.2s;}
+.contact-info a:hover{background:var(--red-dark);}
+.footer-col h4{font-size:13px;font-weight:700;margin-bottom:12px;padding-bottom:8px;border-bottom:2px solid var(--red);}
+.footer-col a{display:block;color:#aaa;text-decoration:none;font-size:12px;margin-bottom:7px;transition:color 0.2s;}
+.footer-col a:hover{color:#ef9a9a;}
+.footer-bottom{background:#111;padding:14px 0;text-align:center;font-size:11px;color:#666;border-top:1px solid #333;}
+.footer-bottom span{color:#ef9a9a;}
+
+/* MODAL */
+.modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.6);z-index:1000;align-items:center;justify-content:center;padding:20px;}
+.modal-overlay.open{display:flex;}
+.modal{background:#fff;border-radius:14px;padding:28px;width:100%;max-width:500px;max-height:90vh;overflow-y:auto;box-shadow:0 20px 60px rgba(0,0,0,0.3);animation:slideUp 0.3s ease;}
+@keyframes slideUp{from{transform:translateY(30px);opacity:0}to{transform:translateY(0);opacity:1}}
+.modal-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px;padding-bottom:12px;border-bottom:2px solid var(--red-pale);}
+.modal-title{font-size:18px;font-weight:800;color:var(--red);}
+.modal-close{background:none;border:none;font-size:20px;cursor:pointer;color:var(--gray);}
+.modal-close:hover{color:var(--red);}
+.form-group{margin-bottom:14px;}
+.form-group label{display:block;font-size:12px;font-weight:600;color:var(--gray-dark);margin-bottom:5px;}
+.form-group input,.form-group select,.form-group textarea{width:100%;padding:9px 12px;border:2px solid #e0e0e0;border-radius:7px;font-size:13px;font-family:inherit;outline:none;transition:border-color 0.2s;}
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:var(--red);}
+.form-group textarea{height:90px;resize:vertical;}
+.img-upload{border:2px dashed var(--red);border-radius:8px;padding:18px;text-align:center;cursor:pointer;background:var(--red-pale);}
+.img-upload .icon{font-size:28px;margin-bottom:6px;}
+.img-upload p{font-size:11px;color:var(--gray);}
+.btn-submit{width:100%;background:var(--red);color:#fff;border:none;padding:13px;border-radius:9px;font-size:15px;font-weight:700;cursor:pointer;font-family:inherit;transition:background 0.2s;}
+.btn-submit:hover{background:var(--red-dark);}
+
+/* WHATSAPP FLOAT */
+.wa-float{position:fixed;bottom:22px;right:22px;z-index:999;display:flex;flex-direction:column;align-items:flex-end;gap:10px;}
+.wa-link{background:#25D366;color:#fff;width:52px;height:52px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:24px;box-shadow:0 4px 16px rgba(37,211,102,0.4);text-decoration:none;transition:transform 0.2s;}
+.wa-link:hover{transform:scale(1.1);}
+.post-float-btn{background:var(--red);color:#fff;border:none;padding:11px 18px;border-radius:28px;font-size:13px;font-weight:700;cursor:pointer;box-shadow:0 4px 16px rgba(211,47,47,0.35);display:flex;align-items:center;gap:6px;transition:all 0.2s;font-family:inherit;}
+.post-float-btn:hover{background:var(--red-dark);transform:translateY(-2px);}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+  .main-layout{grid-template-columns:1fr;}
+  .sidebar{display:none;}
+  .tn-links{display:none;}
+  .hero-inner h1{font-size:24px;}
+  .hero-search{flex-direction:column;gap:10px;}
+  .hero-search-wrapper{padding:15px;}
+  .footer-grid{grid-template-columns:1fr 1fr;}
+}
+</style>
+</head>
+<body>
+
+<!-- ===== TOP NAVBAR ===== -->
+<nav class="topnav">
+  <a href="adzee.pk.html" class="tn-logo">
+    <div class="brand">AdZee<span>.pk</span></div>
+    <div class="slogan">BUY, SELL, EXCHANGE</div>
+  </a>
+  <div class="tn-links">
+    <a href="adzee.pk.html" class="tn-link">Home</a>
+    <a href="#" class="tn-link">Search</a>
+    <div class="nav-item">
+      <a href="#" class="tn-link has-arrow">Categories</a>
+      <div class="mega-menu">
+        <div>
+          <div class="mega-col">
+            <h3>Cars, Bikes & Other Vehicles</h3>
+            <ul>
+              <li><a href="#">Cars</a></li>
+              <li><a href="#">Motorcycles & Scooters</a></li>
+              <li><a href="#">Car Accessories</a></li>
+              <li><a href="#">Auto Spare Parts</a></li>
+              <li><a href="#">Rickshaw & Chingchi</a></li>
+              <li><a href="#">Buses, Vans and Trucks</a></li>
+              <li><a href="#">Boats</a></li>
+              <li><a href="#">Tractors & Trailers</a></li>
+              <li><a href="#">Cars on Installment</a></li>
+            </ul>
+          </div>
+          <div class="mega-col">
+            <h3>Electronics & Home Appliances</h3>
+            <ul>
+              <li><a href="#">ACs & Coolers</a></li>
+              <li><a href="#">Computer Accessories</a></li>
+              <li><a href="#">Camera & Accessories</a></li>
+              <li><a href="#">CCTV Cameras</a></li>
+              <li><a href="#">Fridge & Freezers</a></li>
+              <li><a href="#">Games & Entertainment</a></li>
+              <li><a href="#">Games, UPS & Power Solutions</a></li>
+              <li><a href="#">Kitchen Appliances</a></li>
+              <li><a href="#">Laptop & Accessories</a></li>
+              <li><a href="#">TV, Video & Audio</a></li>
+              <li><a href="#">Washing Machines & Dryers</a></li>
+              <li><a href="#">Other Home Appliances</a></li>
+            </ul>
+          </div>
+        </div>
+        <div>
+          <div class="mega-col">
+            <h3>Mobiles</h3>
+            <ul>
+              <li><a href="#">Smartphones</a></li>
+              <li><a href="#">Tablets</a></li>
+              <li><a href="#">Mobile Accessories</a></li>
+            </ul>
+          </div>
+          <div class="mega-col">
+            <h3>Animals</h3>
+            <ul>
+              <li><a href="#">Birds</a></li>
+              <li><a href="#">Cats</a></li>
+              <li><a href="#">Fish & Aquarium</a></li>
+              <li><a href="#">Dogs</a></li>
+            </ul>
+          </div>
+        </div>
+        <div>
+          <div class="mega-col">
+            <h3>Property for Sale</h3>
+            <ul>
+              <li><a href="#">Apartments & Flats</a></li>
+              <li><a href="#">Shops, Offices & Showrooms</a></li>
+              <li><a href="#">Commercial Space</a></li>
+              <li><a href="#">Houses</a></li>
+              <li><a href="#">Lands & Plots</a></li>
+              <li><a href="#">Portions & Floors</a></li>
+            </ul>
+          </div>
+          <div class="mega-col">
+            <h3>More</h3>
+            <ul>
+              <li><a href="#">Agriculture</a></li>
+              <li><a href="#">Services</a></li>
+              <li><a href="#">Jobs</a></li>
+              <li><a href="#">Fashion & Beauty</a></li>
+              <li><a href="#">Sports</a></li>
+              <li><a href="#">Furniture & Home Decor</a></li>
+              <li><a href="#">Business & Industrial</a></li>
+              <li><a href="#">Books</a></li>
+              <li><a href="#">Hobbies</a></li>
+              <li><a href="#">Kids</a></li>
+            </ul>
+          </div>
+        </div>
+        <div>
+          <div class="mega-col">
+            <h3>Property for Rent</h3>
+            <ul>
+              <li><a href="#">Apartments & Flats</a></li>
+              <li><a href="#">Roommates & Paying Guests</a></li>
+              <li><a href="#">Houses</a></li>
+              <li><a href="#">Rooms</a></li>
+              <li><a href="#">Lands & Plots</a></li>
+              <li><a href="#">Portions & Floors</a></li>
+              <li><a href="#">Shops, Offices, Showrooms & Commercial Space</a></li>
+              <li><a href="#">Vacation Rentals - Guest Houses</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="nav-item">
+      <a href="adzee_login.html" class="tn-link has-arrow">Login\Register</a>
+      <div class="dropdown-menu">
+        <ul>
+          <li><a href="adzee_login.html">Login</a></li>
+          <li><a href="adzee_login.html">Register</a></li>
+          <li><a href="adzee_login.html">Post An Ad</a></li>
+          <li><a href="#">Packages</a></li>
+        </ul>
+      </div>
+    </div>
+    <a href="#" class="tn-link">My Profile</a>
+    <a href="#" class="tn-link">My Ads</a>
+    <div class="nav-item">
+      <a href="#" class="tn-link has-arrow">Locations</a>
+    </div>
+  </div>
+
+  <div class="tn-right">
+    <a href="adzee_login.html" class="signin"><span style="font-size:18px; margin-right:4px;">👤</span>Sign in</a>
+    <span class="sep">Or</span>
+    <a href="adzee_login.html" class="register">Register</a>
+    <button class="btn-post-ad" onclick="openModal('post')"><span style="font-weight:800;font-size:18px;">+</span> Post An AD</button>
+  </div>
+</nav>
+
+<!-- ===== HERO SECTION ===== -->
+<div class="hero">
+  <img class="hero-bg" src="https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?w=1600&q=80" alt="Hero Background">
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-inner">
+      <h1>Buy, Sell &amp; Exchange more easily. Post your AD today!</h1>
+      <p class="sub">AdZee.pk - Pakistan's Emerging Ads Platform</p>
+      <div class="hero-search-wrapper">
+        <div class="hero-search">
+          <input type="text" placeholder="Enter Keywords" id="heroKeyword">
+          <select id="heroCat">
+            <option value="">Select Category</option>
+            <option>Mobile Phones</option>
+            <option>Cars</option>
+            <option>Property for Sale</option>
+            <option>Property for Rent</option>
+            <option>Electronics</option>
+            <option>Furniture</option>
+            <option>Fashion &amp; Beauty</option>
+            <option>Jobs</option>
+            <option>Bikes</option>
+            <option>Animals</option>
+            <option>Agriculture</option>
+            <option>Services</option>
+          </select>
+          <div class="loc-input">
+            <span>📍</span>
+            <input type="text" placeholder="Select Location">
+          </div>
+          <button class="search-btn" onclick="doSearch()">🔍 Search</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== POPULAR CATEGORIES ===== -->
+<div class="cats-section">
+  <h2>Popular Categories</h2>
+  <div class="cats-slider-wrap">
+    <button class="arrow-btn arrow-left" onclick="scrollCats(-1)">&#8249;</button>
+    <div class="cats-slider" id="catsSlider">
+      <a href="#" class="cat-item"><div class="cat-img"><img src="https://cdn-icons-png.flaticon.com/512/1020/1020302.png" alt="Cars"></div><span>Cars</span></a>
+      <a href="#" class="cat-item"><div class="cat-img"><img src="https://cdn-icons-png.flaticon.com/512/3731/3731135.png" alt="Bikes"></div><span>Bikes</span></a>
+      <a href="#" class="cat-item"><div class="cat-img"><img src="https://cdn-icons-png.flaticon.com/512/2633/2633903.png" alt="Property for Sale"></div><span>Property for Sale</span></a>
+      <a href="#" class="cat-item"><div class="cat-img"><img src="https://cdn-icons-png.flaticon.com/512/2633/2633898.png" alt="Property for Rent"></div><span>Property for Rent</span></a>
+      <a href="#" class="cat-item"><div class="cat-img"><img src="https://cdn-icons-png.flaticon.com/512/3132/3132473.png" alt="Fashion"></div><span>Fashion &amp; Beauty</span></a>
+      <a href="#" class="cat-item"><div class="cat-img"><img src="https://cdn-icons-png.flaticon.com/512/1006/1006555.png" alt="Business"></div><span>Business &amp; Industrial</span></a>
+      <a href="#" class="cat-item"><div class="cat-img"><img src="https://cdn-icons-png.flaticon.com/512/3159/3159981.png" alt="Electronics"></div><span>Electronics</span></a>
+      <a href="#" class="cat-item"><div class="cat-img"><img src="https://cdn-icons-png.flaticon.com/512/825/825026.png" alt="Agriculture"></div><span>Agriculture</span></a>
+      <a href="#" class="cat-item"><div class="cat-img"><img src="https://cdn-icons-png.flaticon.com/512/1006/1006541.png" alt="Services"></div><span>Services</span></a>
+      <a href="#" class="cat-item"><div class="cat-img"><img src="https://cdn-icons-png.flaticon.com/512/2972/2972166.png" alt="Mobile Phones"></div><span>Mobile Phones</span></a>
+      <a href="#" class="cat-item"><div class="cat-img"><img src="https://cdn-icons-png.flaticon.com/512/1209/1209028.png" alt="Jobs"></div><span>Jobs</span></a>
+      <a href="#" class="cat-item"><div class="cat-img"><img src="https://cdn-icons-png.flaticon.com/512/2364/2364102.png" alt="Animals"></div><span>Animals</span></a>
+      <a href="#" class="cat-item"><div class="cat-img"><img src="https://cdn-icons-png.flaticon.com/512/2232/2232688.png" alt="Books"></div><span>Books</span></a>
+      <a href="#" class="cat-item"><div class="cat-img"><img src="https://cdn-icons-png.flaticon.com/512/2603/2603738.png" alt="Furniture"></div><span>Furniture</span></a>
+      <a href="#" class="cat-item"><div class="cat-img"><img src="https://cdn-icons-png.flaticon.com/512/1041/1041180.png" alt="Sports"></div><span>Sports</span></a>
+    </div>
+    <button class="arrow-btn arrow-right" onclick="scrollCats(1)">&#8250;</button>
+  </div>
+</div>
+
+<!-- ===== FEATURES STRIP ===== -->
+<div class="features-strip">
+  <div class="container">
+    <div class="feature-item"><div class="fi-icon">✅</div><div class="fi-title">Free Unlimited Ads</div><div class="fi-desc">No charges at all</div></div>
+    <div class="feature-item"><div class="fi-icon">💬</div><div class="fi-title">WhatsApp Chat</div><div class="fi-desc">Direct contact with seller</div></div>
+    <div class="feature-item"><div class="fi-icon">📍</div><div class="fi-title">Location Map</div><div class="fi-desc">Find nearby ads</div></div>
+    <div class="feature-item"><div class="fi-icon">🔒</div><div class="fi-title">Safe Deals</div><div class="fi-desc">Verified sellers</div></div>
+    <div class="feature-item"><div class="fi-icon">📸</div><div class="fi-title">Photo &amp; Video</div><div class="fi-desc">Upload up to 10 photos</div></div>
+  </div>
+</div>
+
+<!-- ===== MAIN CONTENT ===== -->
+<div class="container">
+  <div class="main-layout">
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+      <div class="sidebar-box">
+        <div class="sidebar-title">🏙️ Browse by City</div>
+        <a href="#" class="sidebar-link"><span>Karachi</span><span class="count">1.2L</span></a>
+        <a href="#" class="sidebar-link"><span>Lahore</span><span class="count">98K</span></a>
+        <a href="#" class="sidebar-link"><span>Islamabad</span><span class="count">65K</span></a>
+        <a href="#" class="sidebar-link"><span>Multan</span><span class="count">42K</span></a>
+        <a href="#" class="sidebar-link"><span>Faisalabad</span><span class="count">38K</span></a>
+        <a href="#" class="sidebar-link"><span>Rawalpindi</span><span class="count">35K</span></a>
+        <a href="#" class="sidebar-link"><span>Peshawar</span><span class="count">28K</span></a>
+        <a href="#" class="sidebar-link"><span>Quetta</span><span class="count">18K</span></a>
+      </div>
+      <div class="sidebar-box">
+        <div class="sidebar-title">🔥 Trending Searches</div>
+        <a href="#" class="sidebar-link"><span>iPhone 15</span><span class="count">Hot</span></a>
+        <a href="#" class="sidebar-link"><span>Honda City</span><span class="count">Hot</span></a>
+        <a href="#" class="sidebar-link"><span>Samsung A54</span></a>
+        <a href="#" class="sidebar-link"><span>1 Room Flat</span></a>
+        <a href="#" class="sidebar-link"><span>Laptop Core i5</span></a>
+        <a href="#" class="sidebar-link"><span>Suzuki Alto</span></a>
+      </div>
+      <div class="sidebar-box" style="background:var(--red);color:#fff;text-align:center;">
+        <div style="font-size:26px;margin-bottom:6px;">📞</div>
+        <div style="font-size:12px;font-weight:700;margin-bottom:4px;">Contact Us</div>
+        <div style="font-size:16px;font-weight:800;">+92 332 3001003</div>
+        <div style="font-size:10px;opacity:0.9;margin-top:4px;">Available 24/7</div>
+      </div>
+    </aside>
+
+    <!-- MAIN ADS -->
+    <div>
+      <div class="tabs">
+        <button class="tab active" onclick="setTab(this)">✨ Latest Ads</button>
+        <button class="tab" onclick="setTab(this)">⭐ Featured</button>
+        <button class="tab" onclick="setTab(this)">🔥 Urgent Sale</button>
+      </div>
+      <div class="section-header">
+        <div class="section-title">Latest Listings</div>
+        <a href="#" class="see-all">View All →</a>
+      </div>
+      <div class="ads-grid" id="adsGrid">
+        <a href="#" class="ad-card" onclick="openAdDetail(event)">
+          <div class="ad-img"><img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=400&q=80" alt="iPhone"></div>
+          <span class="badge-featured">⭐ Featured</span><button class="fav-btn" onclick="toggleFav(event,this)">🤍</button>
+          <div class="ad-body"><div class="ad-price">Rs 185,000 <span class="negotiable">Negotiable</span></div><div class="ad-title">iPhone 14 Pro Max 256GB Space Black Unlocked</div><div class="ad-meta"><span>📍 Lahore</span><span>2 hrs ago</span></div></div>
+        </a>
+        <a href="#" class="ad-card" onclick="openAdDetail(event)">
+          <div class="ad-img"><img src="https://images.unsplash.com/photo-1609521263047-f8f205293f24?w=400&q=80" alt="Car"></div>
+          <span class="badge-featured">⭐ Featured</span><button class="fav-btn" onclick="toggleFav(event,this)">🤍</button>
+          <div class="ad-body"><div class="ad-price">Rs 28,00,000 <span class="fixed-tag">Fixed</span></div><div class="ad-title">Honda City 2021 Aspire Automatic 1300cc</div><div class="ad-meta"><span>📍 Karachi</span><span>5 hrs ago</span></div></div>
+        </a>
+        <a href="#" class="ad-card" onclick="openAdDetail(event)">
+          <div class="ad-img"><img src="https://images.unsplash.com/photo-1593640408182-31c228f37f64?w=400&q=80" alt="Laptop"></div>
+          <span class="badge-new">New</span><button class="fav-btn" onclick="toggleFav(event,this)">🤍</button>
+          <div class="ad-body"><div class="ad-price">Rs 95,000 <span class="negotiable">Negotiable</span></div><div class="ad-title">Dell Latitude Core i5 12th Gen 16GB 512GB SSD</div><div class="ad-meta"><span>📍 Islamabad</span><span>Today</span></div></div>
+        </a>
+        <a href="#" class="ad-card" onclick="openAdDetail(event)">
+          <div class="ad-img"><img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=400&q=80" alt="Sofa"></div>
+          <button class="fav-btn" onclick="toggleFav(event,this)">🤍</button>
+          <div class="ad-body"><div class="ad-price">Rs 45,000 <span class="negotiable">Negotiable</span></div><div class="ad-title">L-Shape Sofa Set 7 Seater Gray Color Excellent Condition</div><div class="ad-meta"><span>📍 Multan</span><span>1 day ago</span></div></div>
+        </a>
+        <a href="#" class="ad-card" onclick="openAdDetail(event)">
+          <div class="ad-img"><img src="https://images.unsplash.com/photo-1585771724684-38269d6639fd?w=400&q=80" alt="Samsung"></div>
+          <span class="badge-new">New</span><button class="fav-btn" onclick="toggleFav(event,this)">🤍</button>
+          <div class="ad-body"><div class="ad-price">Rs 72,000 <span class="fixed-tag">Fixed</span></div><div class="ad-title">Samsung Galaxy S23 FE 256GB Graphite PTA Approved</div><div class="ad-meta"><span>📍 Faisalabad</span><span>3 hrs ago</span></div></div>
+        </a>
+        <a href="#" class="ad-card" onclick="openAdDetail(event)">
+          <div class="ad-img" style="font-size:52px;">🏠</div>
+          <button class="fav-btn" onclick="toggleFav(event,this)">🤍</button>
+          <div class="ad-body"><div class="ad-price">Rs 1,20,000/mo <span class="negotiable">Negotiable</span></div><div class="ad-title">3 Bedroom Flat on Rent - DHA Phase 5 Lahore</div><div class="ad-meta"><span>📍 Lahore</span><span>2 days ago</span></div></div>
+        </a>
+        <a href="#" class="ad-card" onclick="openAdDetail(event)">
+          <div class="ad-img"><img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&q=80" alt="Bike"></div>
+          <span class="badge-featured">⭐ Featured</span><button class="fav-btn" onclick="toggleFav(event,this)">🤍</button>
+          <div class="ad-body"><div class="ad-price">Rs 2,40,000 <span class="negotiable">Negotiable</span></div><div class="ad-title">Honda CD 70 2022 Model Very Good Condition</div><div class="ad-meta"><span>📍 Rawalpindi</span><span>Today</span></div></div>
+        </a>
+        <a href="#" class="ad-card" onclick="openAdDetail(event)">
+          <div class="ad-img" style="font-size:52px;">💼</div>
+          <span class="badge-new">New Job</span><button class="fav-btn" onclick="toggleFav(event,this)">🤍</button>
+          <div class="ad-body"><div class="ad-price">Rs 50,000 - 80,000</div><div class="ad-title">Senior Software Developer Required - React/Node.js</div><div class="ad-meta"><span>📍 Karachi</span><span>Today</span></div></div>
+        </a>
+      </div>
+      <div style="text-align:center;margin:24px 0;">
+        <button onclick="loadMore()" style="background:#fff;border:2px solid var(--red);color:var(--red);padding:11px 38px;border-radius:28px;font-size:13px;font-weight:700;cursor:pointer;font-family:inherit;transition:all 0.2s;" onmouseover="this.style.background='var(--red)';this.style.color='#fff'" onmouseout="this.style.background='#fff';this.style.color='var(--red)'">Load More Ads ↓</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- CITIES -->
+  <div class="section">
+    <div class="section-header"><div class="section-title">Browse by City</div></div>
+    <div class="cities-grid">
+      <a href="#" class="city-card"><div class="city-icon">🌊</div><div class="city-name">Karachi</div><div class="city-count">120,000+ ads</div></a>
+      <a href="#" class="city-card"><div class="city-icon">🏰</div><div class="city-name">Lahore</div><div class="city-count">98,000+ ads</div></a>
+      <a href="#" class="city-card"><div class="city-icon">🏛️</div><div class="city-name">Islamabad</div><div class="city-count">65,000+ ads</div></a>
+      <a href="#" class="city-card"><div class="city-icon">🕌</div><div class="city-name">Multan</div><div class="city-count">42,000+ ads</div></a>
+      <a href="#" class="city-card"><div class="city-icon">🏭</div><div class="city-name">Faisalabad</div><div class="city-count">38,000+ ads</div></a>
+      <a href="#" class="city-card"><div class="city-icon">🏙️</div><div class="city-name">Rawalpindi</div><div class="city-count">35,000+ ads</div></a>
+      <a href="#" class="city-card"><div class="city-icon">🗺️</div><div class="city-name">Peshawar</div><div class="city-count">28,000+ ads</div></a>
+      <a href="#" class="city-card"><div class="city-icon">⛰️</div><div class="city-name">Quetta</div><div class="city-count">18,000+ ads</div></a>
+    </div>
+  </div>
+</div>
+
+<!-- HOW IT WORKS -->
+<div class="hiw">
+  <div class="container">
+    <div style="text-align:center;"><div class="section-title" style="justify-content:center;">How It Works?</div><p style="color:var(--gray);font-size:12px;margin-top:6px;">Buy and sell in just a few easy steps</p></div>
+    <div class="steps-grid">
+      <div class="step-card"><div class="step-num">1</div><div class="step-icon">📝</div><div class="step-title">Register</div><div class="step-desc">Create a free account and connect with Pakistan's largest platform</div></div>
+      <div class="step-card"><div class="step-num">2</div><div class="step-icon">📸</div><div class="step-title">Post Your Ad</div><div class="step-desc">Add photos & videos of your item — completely free</div></div>
+      <div class="step-card"><div class="step-num">3</div><div class="step-icon">💬</div><div class="step-title">WhatsApp Chat</div><div class="step-desc">Buyers contact you directly on WhatsApp</div></div>
+      <div class="step-card"><div class="step-num">4</div><div class="step-icon">🤝</div><div class="step-title">Close the Deal</div><div class="step-desc">Agree on price and sell safely</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="#" class="logo-f">AdZee<span>.pk</span></a>
+        <p>Pakistan's fastest growing free classified ads platform. Millions buy and sell here daily. Join today!</p>
+        <div class="contact-info">
+          <a href="tel:+923323001003">📞 +92 332 3001003</a>
+          <a href="https://wa.me/923323001003">💬 Chat on WhatsApp</a>
+        </div>
+      </div>
+      <div class="footer-col"><h4>Quick Links</h4><a href="#">Home</a><a href="#">Post an Ad</a><a href="#">Sign Up</a><a href="#">Login</a><a href="#">Packages</a><a href="#">About Us</a></div>
+      <div class="footer-col"><h4>Categories</h4><a href="#">Mobile Phones</a><a href="#">Cars</a><a href="#">Property</a><a href="#">Electronics</a><a href="#">Furniture</a><a href="#">Jobs</a></div>
+      <div class="footer-col"><h4>Help &amp; Support</h4><a href="#">Contact Us</a><a href="#">FAQ</a><a href="#">Privacy Policy</a><a href="#">Terms of Use</a><a href="#">Safety Tips</a><a href="#">Report</a></div>
+    </div>
+  </div>
+  <div class="footer-bottom"><div class="container">© 2025 <span>AdZee.pk</span> — All Rights Reserved | Contact: <span>+92 332 3001003</span> | Made with ❤️ for Pakistan</div></div>
+</footer>
+
+<!-- FLOATING BUTTONS -->
+<div class="wa-float">
+  <button class="post-float-btn" onclick="openModal('post')">+ Post an Ad</button>
+  <a href="https://wa.me/923323001003" class="wa-link" target="_blank" title="WhatsApp">💬</a>
+</div>
+
+<!-- POST AD MODAL -->
+<div class="modal-overlay" id="postModal">
+  <div class="modal">
+    <div class="modal-header"><div class="modal-title">+ Post New Ad</div><button class="modal-close" onclick="closeModal('postModal')">✕</button></div>
+    <div class="form-group"><label>Select Category *</label><select><option>-- Select Category --</option><option>📱 Mobile Phones</option><option>🚗 Cars</option><option>🏠 Property</option><option>💻 Laptop</option><option>🛋️ Furniture</option><option>👗 Fashion</option><option>💼 Jobs</option></select></div>
+    <div class="form-group"><label>Ad Title *</label><input type="text" placeholder="e.g. iPhone 14 Pro Max 256GB..."></div>
+    <div class="form-group"><label>Price (PKR) *</label><input type="number" placeholder="e.g. 85000"></div>
+    <div class="form-group"><label>Description</label><textarea placeholder="Describe your item in detail..."></textarea></div>
+    <div class="form-group"><label>City *</label><select><option>-- Select City --</option><option>Karachi</option><option>Lahore</option><option>Islamabad</option><option>Multan</option><option>Faisalabad</option><option>Rawalpindi</option></select></div>
+    <div class="form-group"><label>Upload Photos</label><div class="img-upload" onclick="document.getElementById('imgInput').click()"><input type="file" id="imgInput" multiple accept="image/*" style="display:none" onchange="showImages(this)"><div class="icon">📸</div><p>Add photos (max 10)</p></div><div id="imagePreview" style="display:flex;gap:6px;flex-wrap:wrap;margin-top:8px;"></div></div>
+    <div class="form-group"><label>WhatsApp Number *</label><input type="tel" placeholder="+92 3XX XXXXXXX" value="+92 332 3001003"></div>
+    <button class="btn-submit" onclick="submitAd()">✅ Publish Ad — Free!</button>
+  </div>
+</div>
+
+<!-- AD DETAIL MODAL -->
+<div class="modal-overlay" id="adModal">
+  <div class="modal" style="max-width:560px;">
+    <div class="modal-header"><div class="modal-title">Ad Details</div><button class="modal-close" onclick="closeModal('adModal')">✕</button></div>
+    <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=600&q=80" style="width:100%;border-radius:9px;margin-bottom:14px;max-height:220px;object-fit:cover;">
+    <div style="font-size:20px;font-weight:800;color:var(--red);margin-bottom:4px;">Rs 185,000</div>
+    <div style="font-size:15px;font-weight:700;margin-bottom:7px;">iPhone 14 Pro Max 256GB Space Black Unlocked</div>
+    <div style="font-size:12px;color:var(--gray);margin-bottom:12px;">📍 Lahore &nbsp;|&nbsp; 2 hours ago</div>
+    <div style="font-size:12px;line-height:1.8;color:var(--gray-dark);margin-bottom:14px;">Brand new condition iPhone 14 Pro Max. With box, 1 year Apple warranty remaining. PTA Approved. No scratches or dents.</div>
+    <div style="display:flex;gap:10px;">
+      <a href="https://wa.me/923323001003" target="_blank" style="flex:1;background:#25D366;color:#fff;padding:12px;border-radius:9px;text-decoration:none;font-weight:700;font-size:13px;text-align:center;">💬 WhatsApp</a>
+      <a href="tel:+923323001003" style="flex:1;background:var(--red);color:#fff;padding:12px;border-radius:9px;text-decoration:none;font-weight:700;font-size:13px;text-align:center;">📞 Call Now</a>
+    </div>
+  </div>
+</div>
+
+<script>
+function openModal(t){if(t==='post')document.getElementById('postModal').classList.add('open');}
+function closeModal(id){document.getElementById(id).classList.remove('open');}
+document.querySelectorAll('.modal-overlay').forEach(o=>o.addEventListener('click',function(e){if(e.target===this)this.classList.remove('open');}));
+function openAdDetail(e){e.preventDefault();document.getElementById('adModal').classList.add('open');}
+function setTab(el){el.closest('.tabs').querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));el.classList.add('active');}
+function toggleFav(e,btn){e.preventDefault();e.stopPropagation();btn.textContent=btn.textContent==='🤍'?'❤️':'🤍';}
+function doSearch(){const q=document.getElementById('heroKeyword').value;if(q)alert('Searching: '+q);}
+function submitAd(){closeModal('postModal');setTimeout(()=>alert('✅ Your ad has been published successfully!\n\nContact: +92 332 3001003'),200);}
+function showImages(input){const p=document.getElementById('imagePreview');p.innerHTML='';[...input.files].forEach(f=>{const img=document.createElement('img');img.src=URL.createObjectURL(f);img.style.cssText='width:56px;height:56px;object-fit:cover;border-radius:6px;border:2px solid var(--red)';p.appendChild(img);});}
+function loadMore(){const grid=document.getElementById('adsGrid');[{price:'Rs 32,000',title:'Samsung Galaxy A54 128GB Black PTA',loc:'Peshawar',e:'📱',t:'Today'},{price:'Rs 5,50,000',title:'Suzuki Alto VXL 2020 First Owner',loc:'Karachi',e:'🚗',t:'2 days ago'},{price:'Rs 18,000',title:'Gaming Chair High Back Lumbar Support Red',loc:'Lahore',e:'🎮',t:'Today'},{price:'Rs 65,000',title:'Lenovo IdeaPad Core i3 11th Gen 8GB',loc:'Islamabad',e:'💻',t:'1 day ago'}].forEach(ad=>{grid.innerHTML+=`<a href="#" class="ad-card" onclick="openAdDetail(event)"><div class="ad-img" style="font-size:52px;">${ad.e}</div><button class="fav-btn" onclick="toggleFav(event,this)">🤍</button><div class="ad-body"><div class="ad-price">${ad.price} <span class="negotiable">Negotiable</span></div><div class="ad-title">${ad.title}</div><div class="ad-meta"><span>📍 ${ad.loc}</span><span>${ad.t}</span></div></div></a>`;});}
+function scrollCats(dir){const s=document.getElementById('catsSlider');s.scrollBy({left:dir*300,behavior:'smooth'});}
+document.addEventListener('keydown',e=>{if(e.key==='Escape')document.querySelectorAll('.modal-overlay').forEach(m=>m.classList.remove('open'));});
+document.getElementById('heroKeyword').addEventListener('keydown',e=>{if(e.key==='Enter')doSearch();});
+</script>
+</body>
+</html>
